@@ -1,6 +1,10 @@
 <template>
-  <Header />
   <main>
+  <Header />
     <slot />
   </main>
 </template>
+
+<style scoped>
+  @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&display=swap');
+</style>
