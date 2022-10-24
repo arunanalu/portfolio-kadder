@@ -6,14 +6,14 @@
 </script>
 
 <template>
-  <section>
-    <h4>pagina inicial</h4>
+  <section 
+    class="grid grid-cols-4 gap-6 max-w-[60%] mx-auto"
+  >
     <div v-if="pending">carregando...</div>
-    <div v-else>
-      <div v-for="image in value" :key="image.key" >
-        <img :src="runtimeConfig.public.api + '/image/' + image.key" alt="ilustração" />
-        <p>{{ image.description }}</p>
-      </div>
+    <div v-else v-for="image in value" :key="image.key"
+      class="w-[100%] aspect-square"
+    >
+      <ImageItem :image="image" />
     </div>
   </section>
 </template>
