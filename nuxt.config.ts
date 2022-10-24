@@ -11,4 +11,9 @@ export default defineNuxtConfig({
       },
     },
   },
+  runtimeConfig: {
+    public: {
+      api: process.env.API_URL || "default_api_url",
+    }
+  }
 })
