@@ -18,10 +18,10 @@ const route = useRoute()
     >
       <li v-for="link in links" :key="link.name">
         <NuxtLink 
-          class="menulink text-xl font-semibold text-gray-600 
-          hover:text-gray-900"
+          class="menulink text-xl font-semibold text-gray-500 
+          hover:text-gray-100"
           :class="{
-            'text-gray-900': route.path === link.href
+            'text-gray-100': route.path === link.href
           }" 
           :to="link.href"
         >

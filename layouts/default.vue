@@ -1,10 +1,6 @@
 <template>
-  <main>
+  <main class="w-screen h-screen bg-zinc-900 text-gray-100">
   <Header />
     <slot />
   </main>
 </template>
-
-<style scoped>
-  @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&display=swap');
-</style>

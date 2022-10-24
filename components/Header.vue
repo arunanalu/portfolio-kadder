@@ -1,10 +1,10 @@
 <template>
   <header 
-    class="flex flex-col w-screen py-5 h-max bg-green-600
-    justify-center items-center gap-y-5
+    class="flex flex-col w-screen py-5 pt-8 h-max
+    justify-center items-center gap-y-14
     "
   >
-    <h1 class="text-3xl">Header</h1>
+    <h1 class="text-5xl">Kadder</h1>
     <CustomNavbar />
   </header>
 </template>
