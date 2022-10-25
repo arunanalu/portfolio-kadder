@@ -16,7 +16,7 @@ const route = useRoute()
   <nav>
     <ul class="flex flex-row gap-x-20"
     >
-      <li v-for="link in links" :key="link.name">
+      <li class="flex flex-col items-center" v-for="link in links" :key="link.name">
         <NuxtLink 
           class="menulink text-xl font-semibold text-gray-500 
           hover:text-gray-100"
@@ -27,6 +27,7 @@ const route = useRoute()
         >
           {{ link.name }}
         </NuxtLink>
+        <div class="mt-1 w-20 h-1 rounded-lg bg-gradient-to-br from-purple-700 to-pink-700" />
       </li>
     </ul>
   </nav>
