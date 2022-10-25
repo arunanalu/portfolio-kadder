@@ -21,17 +21,24 @@
       w-screen min-h-screen flex justify-center items-center 
       "
     >
+    <button 
+      class="absolute top-10 right-20 p-2 rounded-lg bg-gradient-to-br from-purple-700 to-pink-700"
+      @click="open = false"
+    >
+      FECHAR
+    </button>
       <div 
         class="w-[80%] h-[50.0rem] flex"
       >
-        <div class="w-[70%] flex justify-center items-center">
+        <div :class="{'w-[100%]': image.description.length == 0, 'w-[70%]': image.description.length > 0 }" 
+          class="flex justify-center items-center">
             <img 
               :src="runtimeConfig.public.api + '/image/' + image.key" alt="ilustração" 
               class="max-w-[100%] max-h-[100%] rounded-lg "
               v-click-outside="() => open = false"
             />
         </div>
-        <div class=" w-[30%] flex justify-center items-center">
+        <div v-if="image.description.length > 0" class="w-[30%] flex justify-center items-center">
           <div class="w-[70%] h-[70%] rounded-lg flex flex-col text-xl shadow-xl
             bg-gradient-to-br from-purple-700 to-pink-700
             "
