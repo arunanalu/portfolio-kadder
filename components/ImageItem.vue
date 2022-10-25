@@ -18,28 +18,28 @@
   <Teleport to="body">
     <div v-if="open" 
       class="fixed top-0 bg-zinc-900/90 text-gray-100
-      w-screen min-h-screen flex justify-center items-center
+      w-screen min-h-screen flex justify-center items-center 
       "
     >
       <div 
-        class="w-[50%] h-screen p-4 flex flex-col
-        items-center justify-start relative
-        "
+        class="w-[80%] h-[50.0rem] flex"
       >
-      <button 
-        @click="open = false"
-        class="absolute top-4 right-4 scale-[2]"
-      >
-        x
-      </button>
-        <div class="mt-5" v-click-outside="() => open = false">
-          <img 
-            :src="runtimeConfig.public.api + '/image/' + image.key" alt="ilustração" 
-            class="max-w-[1000px] max-h-[700px]"
-          />
+        <div class="w-[70%] flex justify-center items-center">
+            <img 
+              :src="runtimeConfig.public.api + '/image/' + image.key" alt="ilustração" 
+              class="max-w-[100%] max-h-[100%] rounded-lg "
+              v-click-outside="() => open = false"
+            />
         </div>
-        <p class="mt-10">Descrição:</p>
-        <p>{{ image.description }}</p>
+        <div class=" w-[30%] flex justify-center items-center">
+          <div class="w-[70%] h-[70%] rounded-lg flex flex-col text-xl shadow-xl
+            bg-gradient-to-br from-purple-700 to-pink-700
+            "
+          >
+            <p class="mt-20 self-center">Descrição:</p>
+            <p class="mt-10 w-[100%] h-[100%] p-3 text-center ">{{ image.description }}</p>
+          </div>
+        </div>
       </div>
     </div>
   </Teleport>
