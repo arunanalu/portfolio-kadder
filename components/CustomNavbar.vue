@@ -34,7 +34,6 @@ const route = useRoute()
 </template>
 
 <style scoped>
-  @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&display=swap');
   .menulink {
     transition: all 0.2s ease-in-out;
     font-family: 'Crimson Text', serif;
