@@ -7,13 +7,7 @@
       "config": {
         "tscOptions": {
           "sourceMap": false
-        },
-        "generateStaticRoutes": true,
-        "serverFiles": [
-          "package.json",
-          "package-lock.json",
-          "nuxt.config.ts"
-        ]
+        }
       }
     }
   ]
