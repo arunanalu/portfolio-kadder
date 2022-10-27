@@ -23,13 +23,13 @@
       "
     >
     <button 
-      class="absolute top-10 right-20 p-2 rounded-lg bg-gradient-to-br from-purple-700 to-pink-700 "
+      class="absolute top-0 right-0 sm:top-5 sm:right-5 md:top-5 md:right-5 xl:top-10 xl:right-20 p-2 rounded-lg bg-gradient-to-br from-purple-700 to-pink-700 "
       @click="open = false"
     >
       FECHAR
     </button>
       <div
-        class="w-[80%] flex justify-center "
+        class="w-[85%] sm:w-[70%] md:w-[60%] lg:w-[80%] xl:w-[70%] 2xl:w-[80%] flex flex-col lg:flex-row justify-center "
       >
         <div 
           class="flex justify-center items-center ">
@@ -40,12 +40,12 @@
             />
         </div>
         <div v-if="image.description.length > 0" class="flex justify-center items-center ">
-          <div class=" h-[100%] w-[400px] flex flex-col text-xl shadow-xl
+          <div class="h-[180px] md:h-[240px] w-[100%] lg:h-[100%] lg:w-[300px] flex flex-col text-xl shadow-xl
           bg
             "
           >
-            <p class="mt-20 self-center ">Descrição:</p>
-            <p class="mt-10 w-[100%] h-[100%] p-3 text-center  ">{{ image.description }}</p>
+            <p class="mt-6 sm:mt-10 xl:mt-20 self-center text-base sm:text-lg md:text-xl ">Descrição:</p>
+            <p class="mt-1 sm:mt-5 lg:mt-10 w-[100%] h-[100%] p-3 text-center text-base sm:text-lg md:text-xl  ">{{ image.description }}</p>
           </div>
         </div>
       </div>
