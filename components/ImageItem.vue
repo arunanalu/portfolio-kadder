@@ -40,9 +40,8 @@
             />
         </div>
         <div v-if="image.description.length > 0" class="flex justify-center items-center ">
-          <div class="h-[180px] md:h-[240px] w-[100%] lg:h-[100%] lg:w-[300px] flex flex-col text-xl shadow-xl
-          bg
-            "
+          <div class="h-[180px] md:h-[240px] w-[100%] lg:h-[100%] lg:w-[300px] flex flex-col text-xl 
+            shadow-xl"
           >
             <p class="mt-6 sm:mt-10 xl:mt-20 self-center text-base sm:text-lg md:text-xl ">Descrição:</p>
             <p class="mt-1 sm:mt-5 lg:mt-10 w-[100%] h-[100%] p-3 text-center text-base sm:text-lg md:text-xl  ">{{ image.description }}</p>
