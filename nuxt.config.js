@@ -1,4 +1,4 @@
-export default defineNuxtConfig({
+export default {
   css: ["~/assets/css/tailwind.css"],
   build: {
     postcss: {
@@ -18,4 +18,4 @@ export default defineNuxtConfig({
       api: process.env.API_URL || "default_api_url",
     }
   }
-})
+}

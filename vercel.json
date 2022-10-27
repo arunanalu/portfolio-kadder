@@ -4,11 +4,7 @@
     {
       "src": "nuxt.config.ts",
       "use": "@nuxtjs/vercel-builder",
-      "config": {
-        "tscOptions": {
-          "sourceMap": false
-        }
-      }
+      "config": {}
     }
   ]
 }
