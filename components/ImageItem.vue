@@ -11,6 +11,13 @@
     }
   })
 
+  const isLoaded = ref(false)
+
+  const onImgLoad = () => {
+    console.log('loaded')
+    isLoaded.value = true
+  }
+
 </script>
 
 <template>
@@ -35,13 +42,14 @@
           class="flex justify-center items-center ">
             <img 
               :src="runtimeConfig.public.api + '/image/' + image.key" alt="ilustração" 
-              class="max-w-[100%] max-h-[80vh] "
+              class="max-w-[100%] max-h-[80vh]"
+              rel="preload"
               v-click-outside="() => open = false"
             />
         </div>
         <div v-if="image.description.length > 0" class="flex justify-center items-center ">
           <div class="h-[180px] md:h-[240px] w-[100%] lg:h-[100%] lg:w-[300px] flex flex-col text-xl 
-            shadow-xl"
+            shadow-xl bg"
           >
             <p class="mt-6 sm:mt-10 xl:mt-20 self-center text-base sm:text-lg md:text-xl ">Descrição:</p>
             <p class="mt-1 sm:mt-5 lg:mt-10 w-[100%] h-[100%] p-3 text-center text-base sm:text-lg md:text-xl  ">{{ image.description }}</p>
@@ -51,11 +59,18 @@
     </div>
   </Teleport>
 
-  <a class="cursor-pointer" @click="open = true" >
-    <img 
-      :src="runtimeConfig.public.api + '/image/' + image.key" alt="ilustração" 
+  <a class="cursor-pointer relative" @click="open = true" >
+    <img
+      @load="onImgLoad"
+      :src="runtimeConfig.public.api + '/image/' + image.key" alt="ilustração"
       class="w-full h-full object-cover transition ease-in-out hover:transition-all hover:scale-105 duration-200"
+      :class="{'invisible': !isLoaded, 'fade-in-small': isLoaded}"
     />
+    <div
+      :class="{'visible': !isLoaded, 'invisible': isLoaded}" 
+      class="animate-pulse absolute top-0 right-0 w-full h-full bg-zinc-700"
+    >
+    </div>
   </a>
 </template>
 
@@ -86,6 +101,11 @@
   .fade-in {
 	-webkit-animation: fade-in 0.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 	        animation: fade-in 0.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  }
+
+  .fade-in-small {
+	-webkit-animation: fade-in 0.8s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	        animation: fade-in 0.8s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
   }
 
   .bg {
