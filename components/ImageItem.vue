@@ -28,7 +28,7 @@
     >
       FECHAR
     </button>
-      <div 
+      <div
         class="w-[80%] flex justify-center "
       >
         <div 
