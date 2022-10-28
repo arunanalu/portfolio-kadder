@@ -15,5 +15,6 @@
     >
       <ImageItem :image="image" />
     </div>
+    <ImagesModal :data="value" />
   </section>
 </template>
