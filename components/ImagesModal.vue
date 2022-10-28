@@ -1,9 +1,12 @@
 <script setup>
 
-const runtimeConfig = useRuntimeConfig()
-const open = useState('modalOpen')
-let selectedImage = useState('selectedImage')
-const show = useState('show')
+  const runtimeConfig = useRuntimeConfig()
+  const open = useState('modalOpen')
+  let selectedImage = useState('selectedImage')
+  const show = useState('show')
+  const descriptionOpen = ref(false)
+  const arrayClosed = ref(['O', 'P', 'E', 'N'])
+  const arrayOpened = ref(['C', 'L', 'O', 'S', 'E'])
 
   defineProps({
     data: Array,
@@ -37,12 +40,6 @@ const show = useState('show')
       z-50
       "
     >
-    <!-- <button 
-      class="z-50 text-sm sm:text-lg md:text-xl absolute top-14 right-8 sm:top-10 sm:right-8 md:top-8 md:right-8 xl:top-10 xl:right-20 p-2 rounded-lg bg-zinc-700 "
-      @click="open = false, show = true"
-    >
-      <Icon name="bi:x-lg" ></Icon>
-    </button> -->
     <div 
       class="cursor-pointer absolute flex justify-center items-center left-0 h-screen w-[8%] md:w-[10%] xl:w-[15%] "
       @click.stop="previousImage(data, selectedImage.key)"
@@ -59,7 +56,6 @@ const show = useState('show')
       <button 
         class="w-8 h-8 md:w-10 md:h-10 bg-gray-100 bg-gray-100 arrow rotate-180 select-none"
         >
-        
       </button>
     </div>
       <div
@@ -70,25 +66,28 @@ const show = useState('show')
         }"
       >
       <div v-if="selectedImage.description.length > 0" class="flex justify-center items-center ">
-        <div class="h-[130px] md:h-[180px] w-[100%] lg:h-[100%] lg:w-[300px] flex flex-col text-xl 
+        <div @click.stop="descriptionOpen = !descriptionOpen" class="h-[130px] md:h-[180px] w-[100%] lg:h-[100%] lg:w-[50px] flex flex-col items-center justify-center text-xl
+          bg-zinc-600"
+        >
+          <div v-if="!descriptionOpen" class="z-50 flex flex-col items-center justify-center text-xl">
+            <div v-for="letter in arrayClosed" :key="letter">{{ letter }}</div>
+          </div>
+          <div v-if="descriptionOpen" class="z-50 flex flex-col items-center justify-center text-xl">
+            <div v-for="letter in arrayOpened" :key="letter">{{ letter }}</div>
+          </div>
+        </div>
+        <div v-if="descriptionOpen" class="h-[130px] md:h-[180px] w-[100%] lg:h-[100%] lg:w-[300px] flex flex-col text-xl 
           bg-zinc-700"
           >
           <p class="mt-1 sm:mt-5 lg:mt-10 w-[100%] h-[100%] p-3 text-center text-base sm:text-lg md:text-xl  ">{{ selectedImage.description }}</p>
         </div>
-        <!-- <div class="h-[130px] md:h-[180px] w-[100%] lg:h-[100%] lg:w-[50px] flex flex-col items-center justify-center text-xl 
-          bg-zinc-600"
-        >
-          <div>O</div>
-          <div>P</div>
-          <div>E</div>
-          <div>N</div>
-        </div> -->
       </div>
       <div 
         class="relative flex justify-center items-center ">
         <button class="absolute w-8 h-8 top-[-10px] right-[-10px] bg-gradient-to-br from-purple-700 to-pink-700 rounded"
           @click="open = false, show = true"
         >
+          <!-- https://icones.js.org/collection/bi?s=x -->
           <Icon name="bi:x-lg" ></Icon>
         </button>
         <img 
