@@ -4,6 +4,7 @@
 
   const open = useState('modalOpen', () => false)
   let selectedImage = useState('selectedImage', () => null)
+  const show = useState('show')
 
   defineProps({
     image: {
@@ -20,6 +21,7 @@
   }
 
   const onClick = (image) => {
+    show.value = false
     open.value = true
     selectedImage.value = {
       key: image.key,
@@ -35,7 +37,7 @@
     <img
       @load="onImgLoad"
       :src="runtimeConfig.public.api + '/image/' + image.key" alt="ilustração"
-      class="w-full h-full object-cover transition ease-in-out hover:transition-all hover:scale-105 duration-200"
+      class="select-none w-full h-full object-cover transition ease-in-out hover:transition-all lg:hover:scale-105 duration-200"
       :class="{'invisible': !isLoaded, 'fade-in-small': isLoaded}"
     />
     <div

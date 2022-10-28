@@ -18,7 +18,7 @@ const route = useRoute()
     >
       <li class="flex flex-col items-center" v-for="link in links" :key="link.name">
         <NuxtLink 
-          class="menulink text-sm sm:text-xl font-semibold text-gray-500 
+          class="select-none menulink text-sm sm:text-xl font-semibold text-gray-500 
           hover:text-gray-100"
           :class="{
             'text-gray-100': route.path === link.href

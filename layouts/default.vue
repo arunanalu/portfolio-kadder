@@ -53,4 +53,14 @@
     );  
     animation: AnimateBG 20s ease infinite;
   }
+
+  input,
+  textarea,
+  button,
+  img,
+  div,
+  select,
+  a {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  }
 </style>

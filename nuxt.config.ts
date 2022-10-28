@@ -11,11 +11,11 @@ export default defineNuxtConfig({
     },
   },
   modules: [
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/tailwindcss', 'nuxt-icon'
   ],
   runtimeConfig: {
     public: {
       api: process.env.API_URL || "default_api_url",
     }
-  }
+  },
 })

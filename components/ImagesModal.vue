@@ -3,6 +3,7 @@
 const runtimeConfig = useRuntimeConfig()
 const open = useState('modalOpen')
 let selectedImage = useState('selectedImage')
+const show = useState('show')
 
   defineProps({
     data: Array,
@@ -36,49 +37,65 @@ let selectedImage = useState('selectedImage')
       z-50
       "
     >
-    <button 
-      class="z-50 text-sm sm:text-lg md:text-xl absolute top-14 right-8 sm:top-10 sm:right-8 md:top-8 md:right-8 xl:top-10 xl:right-20 p-2 rounded-lg bg-zinc-800 "
-      @click="open = false"
+    <!-- <button 
+      class="z-50 text-sm sm:text-lg md:text-xl absolute top-14 right-8 sm:top-10 sm:right-8 md:top-8 md:right-8 xl:top-10 xl:right-20 p-2 rounded-lg bg-zinc-700 "
+      @click="open = false, show = true"
     >
-      FECHAR
-    </button>
+      <Icon name="bi:x-lg" ></Icon>
+    </button> -->
     <div 
-      class="absolute flex justify-center items-center left-0 h-screen w-[8%] md:w-[10%] xl:w-[15%] "
+      class="cursor-pointer absolute flex justify-center items-center left-0 h-screen w-[8%] md:w-[10%] xl:w-[15%] "
       @click.stop="previousImage(data, selectedImage.key)"
     >
       <button 
-        class="w-8 h-8 md:w-10 md:h-10 bg-gray-100 arrow"
+        class="w-8 h-8 md:w-10 md:h-10 bg-gray-100 arrow select-none"
         >
       </button>
     </div>
     <div 
-      class="absolute flex justify-center items-center right-0 h-screen w-[8%] md:w-[10%] xl:w-[15%] z-0"
+      class="cursor-pointer absolute flex justify-center items-center right-0 h-screen w-[8%] md:w-[10%] xl:w-[15%] z-0"
       @click.stop="nextImage(data, selectedImage.key)"
     >
       <button 
-        class="w-8 h-8 md:w-10 md:h-10 bg-gray-100 bg-gray-100 arrow rotate-180"
+        class="w-8 h-8 md:w-10 md:h-10 bg-gray-100 bg-gray-100 arrow rotate-180 select-none"
         >
-        next
+        
       </button>
     </div>
       <div
         class="w-[75%] sm:w-[70%] md:w-[60%] lg:w-[80%] xl:w-[70%] 2xl:w-[80%] flex flex-col lg:flex-row justify-center "
+        v-click-outside="() => {
+          open = false
+          show = true
+        }"
       >
-        <div 
-          class="flex justify-center items-center ">
-            <img 
-              :src="runtimeConfig.public.api + '/image/' + selectedImage.key" alt="ilustração" 
-              class="max-w-[100%] max-h-[80vh]"
-              rel="preload"
-              v-click-outside="() => open = false"
-              />
-        </div>
-        <div v-if="selectedImage.description.length > 0" class="flex justify-center items-center ">
-          <div class="h-[130px] md:h-[180px] w-[100%] lg:h-[100%] lg:w-[300px] flex flex-col text-xl 
-            bg-zinc-800"
+      <div v-if="selectedImage.description.length > 0" class="flex justify-center items-center ">
+        <div class="h-[130px] md:h-[180px] w-[100%] lg:h-[100%] lg:w-[300px] flex flex-col text-xl 
+          bg-zinc-700"
           >
-            <p class="mt-1 sm:mt-5 lg:mt-10 w-[100%] h-[100%] p-3 text-center text-base sm:text-lg md:text-xl  ">{{ selectedImage.description }}</p>
-          </div>
+          <p class="mt-1 sm:mt-5 lg:mt-10 w-[100%] h-[100%] p-3 text-center text-base sm:text-lg md:text-xl  ">{{ selectedImage.description }}</p>
+        </div>
+        <!-- <div class="h-[130px] md:h-[180px] w-[100%] lg:h-[100%] lg:w-[50px] flex flex-col items-center justify-center text-xl 
+          bg-zinc-600"
+        >
+          <div>O</div>
+          <div>P</div>
+          <div>E</div>
+          <div>N</div>
+        </div> -->
+      </div>
+      <div 
+        class="relative flex justify-center items-center ">
+        <button class="absolute w-8 h-8 top-[-10px] right-[-10px] bg-gradient-to-br from-purple-700 to-pink-700 rounded"
+          @click="open = false, show = true"
+        >
+          <Icon name="bi:x-lg" ></Icon>
+        </button>
+        <img 
+          :src="runtimeConfig.public.api + '/image/' + selectedImage.key" alt="ilustração" 
+          class="max-w-[100%] max-h-[80vh] select-none"
+          rel="preload"
+          />
         </div>
       </div>
     </div>

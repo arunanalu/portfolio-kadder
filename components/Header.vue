@@ -1,6 +1,6 @@
 <template>
   <header 
-    class="flex flex-col w-screen py-12 lg:py-20 h-max
+    class="select-none flex flex-col w-screen py-12 lg:py-20 h-max
     justify-center items-center gap-y-12 md:gap-y-14
     "
   >

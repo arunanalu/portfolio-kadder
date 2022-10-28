@@ -2,6 +2,7 @@
 
   const runtimeConfig = useRuntimeConfig()
   const { pending, data: { value } } = await useLazyFetch(`${runtimeConfig.public.api}/image/`)
+  const show = useState('show', () => true)
 
 </script>
 
@@ -12,6 +13,7 @@
     <div v-if="pending" class="absolute top-[25%] right-[48%]">carregando...</div>
     <div v-else v-for="image in value" :key="image.key"
       class="w-[100%] aspect-square"
+      :class="{'invisible': !show, 'visible': show}"
     >
       <ImageItem :image="image" />
     </div>
