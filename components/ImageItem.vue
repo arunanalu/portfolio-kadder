@@ -16,7 +16,6 @@
   const isLoaded = ref(false)
 
   const onImgLoad = () => {
-    console.log('loaded')
     isLoaded.value = true
   }
 

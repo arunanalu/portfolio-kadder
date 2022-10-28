@@ -30,6 +30,12 @@
     }
   }
 
+  const isLoaded = ref(false)
+
+  const onImgLoad = () => {
+    isLoaded.value = true
+  }
+
 </script>
 
 <template>
@@ -85,16 +91,22 @@
       </div>
       <div 
         class="relative flex justify-center items-center ">
-        <button class="absolute w-8 h-8 top-[-10px] right-[-10px] bg-gradient-to-br from-purple-700 to-pink-700 rounded"
+        <button class="z-10 absolute w-8 h-8 top-[-10px] right-[-10px] bg-gradient-to-br from-purple-700 to-pink-700 rounded"
           @click="open = false, show = true"
         >
           <!-- https://icones.js.org/collection/bi?s=x -->
           <Icon name="bi:x-lg" ></Icon>
         </button>
         <img 
+          @load="onImgLoad"
           :src="runtimeConfig.public.api + '/image/' + selectedImage.key" alt="ilustração" 
           class="max-w-[100%] max-h-[80vh] select-none"
           rel="preload"
+          :class="{'invisible': !isLoaded}"
+          />
+          <div
+            :class="{'visible': !isLoaded, 'invisible': isLoaded}" 
+            class="z-0 animate-pulse absolute top-0 right-0 w-full h-full bg-zinc-700"
           />
         </div>
       </div>
