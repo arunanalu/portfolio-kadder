@@ -14,13 +14,14 @@
 
     loading.value = true
 
-    // trocar por fetch
-    const { data, error } = await useFetch(`${runtimeConfig.public.api}/login`, {
+    const { data, error } = await useFetch(() => `${runtimeConfig.public.api}/login`, {
       method: 'POST',
-      body: JSON.stringify(requestjson)
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(requestjson),
+      initialCache: false
     })
-
-    loading.value = false
 
     if (!error.value) {
       errorMsg.value = false
@@ -32,7 +33,6 @@
       usrName.value = ''
       password.value = ''
       errorMsg.value = true
-      console.log('erro')
     }
 
   }
