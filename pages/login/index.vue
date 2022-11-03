@@ -14,7 +14,7 @@
 
     loading.value = true
 
-    const { data, error } = await fetch(`${runtimeConfig.public.api}/login`, {
+    const { data, error } = await useFetch(`${runtimeConfig.public.api}/login`, {
       method: 'POST',
       body: JSON.stringify(requestjson)
     })
@@ -33,6 +33,7 @@
       errorMsg.value = true
       console.log('erro')
     }
+
   }
 
 </script>
