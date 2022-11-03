@@ -14,6 +14,7 @@
 
     loading.value = true
 
+    // trocar por fetch
     const { data, error } = await useFetch(`${runtimeConfig.public.api}/login`, {
       method: 'POST',
       body: JSON.stringify(requestjson)
