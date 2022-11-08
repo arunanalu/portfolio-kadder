@@ -6,9 +6,15 @@
   let selectedImage = useState('selectedImage', () => null)
   const show = useState('show')
 
+  const deleteLoading = ref(false)
+
   defineProps({
     image: {
       type: Object,
+      required: true
+    },
+    logged: {
+      type: Boolean,
       required: true
     }
   })
@@ -28,11 +34,36 @@
     }
   }
 
+  const onImageDelete = (img) => {
+    deleteLoading.value = true
+    fetch(`${runtimeConfig.public.api}/image/${img.key}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': localStorage.getItem('token')
+      },
+    })
+    .then(res => res.json())
+    .then(res => {
+      window.location.href = '/'
+    })
+    .catch(err => {
+      console.log(err)
+    })
+    deleteLoading.value = false
+  }
+
 </script>
 
 <template>
 
   <a class="cursor-pointer relative" @click="onClick(image)" >
+    <div v-if="logged">
+      <button class="z-10 absolute w-7 h-7 top-[-10px] right-[-10px] bg-gradient-to-br from-purple-700 to-pink-700 rounded"
+          @click.stop="onImageDelete(image)"
+        >
+          <Icon :class="{'animate-spin': deleteLoading}" name="bi:x-lg" ></Icon>
+      </button>
+    </div>
     <img
       @load="onImgLoad"
       :src="runtimeConfig.public.api + '/image/' + image.key" alt="ilustração"

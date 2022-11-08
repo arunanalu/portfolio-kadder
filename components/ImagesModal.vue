@@ -76,17 +76,17 @@
             bg-zinc-600"
           >
             <div v-if="!descriptionOpen" class="z-50 flex flex-row lg:flex-col items-center justify-center text-sm sm:text-xl">
-              <div v-for="letter in arrayClosed" :key="letter">{{ letter }}</div>
+              <div v-for="letter in arrayClosed" :key="letter"><p class="select-none">{{ letter }}</p></div>
             </div>
             <div v-if="descriptionOpen" class="z-50 flex flex-row lg:flex-col items-center justify-center text-sm sm:text-xl">
-              <div v-for="letter in arrayOpened" :key="letter">{{ letter }}</div>
+              <div v-for="letter in arrayOpened" :key="letter"><p class="select-none">{{ letter }}</p></div>
             </div>
           </div>
           <div class="h-[180px] w-[100%] lg:h-[100%] lg:w-[300px] flex flex-col text-xl 
             bg-zinc-700 transition-all"
             :class="{'lg:mr-[-300px] lg:mt-0 mt-[-180px]': !descriptionOpen, 'lg:mr-0 mt-0': descriptionOpen}"
             >
-            <p class="mt-1 sm:mt-5 lg:mt-10 w-[100%] h-[100%] p-3 text-center text-base sm:text-lg md:text-xl  ">{{ selectedImage.description }}</p>
+            <p class="mt-1 sm:mt-5 lg:mt-10 w-[100%] h-[100%] p-3 text-center text-base sm:text-lg md:text-xl select-none">{{ selectedImage.description }}</p>
           </div>
       </div>
       <div 
